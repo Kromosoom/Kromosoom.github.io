@@ -1,4 +1,4 @@
-export async function Authentication(url, token) {
+export async function Authentication(url, token) {  //get access token for graphql
     return await fetch(url, {
        method:"POST",
        headers: {
@@ -13,8 +13,8 @@ export async function Authentication(url, token) {
        ).catch(
            error => console.error(error)
        )
-}
-export async function GetData(url, token, query) {
+};
+export async function GetData(url, token, query) {  //fetch data from graphql
     return await fetch(url, {
         method:"POST",
         headers: {
@@ -31,28 +31,11 @@ export async function GetData(url, token, query) {
        ).catch(
            error => console.error(error)
        )
-}
-export function levelNeededXP(level) {
+};
+export function levelNeededXP(level) {  //returns the amount of XP needed for any given level - credits to Olari(olaroll) and Robert Reimann(kanguste)
     return Math.round(level * (176 + 3 * level * (47 + 11 * level)));
-}
-export function calculateLevel(xp) {
-    let level = 0
-
-    while (levelNeededXP(++level) < xp) {}
-
-    return level-1
-}
-export function roundUp(xp) {
-    let roundedNumber = 0;
-    let number = xp / 1000;
-    if (number < 1000) {
-        roundedNumber = Math.ceil(number / 100) * 100;
-    } else {
-        roundedNumber = Math.ceil(number / 1000) * 1000;
-    }
-    return roundedNumber;
-}
-export function roundUp2(number) {
+};
+export function roundUp(number) {   //number rounding
     let roundedNumber = 0;
     if (number < 100) {
         roundedNumber = Math.ceil(number / 10) * 10;
@@ -60,27 +43,27 @@ export function roundUp2(number) {
         roundedNumber = Math.ceil(number / 100) * 100;
     }
     return roundedNumber;
-}
-export function byteConversion(bytes) {
+};
+export function byteConversion(bytes) { //determine what is the optimal size
     const units = ['bytes', 'Kb', 'Mb'];
     let l = 0, n = parseInt(bytes, 10) || 1;
     while(n >= 1000 && ++l){
         n = n/1000;
     }
     return(n.toFixed(n < 10 && l > 0 ? 2 : 0) + ' ' + units[l]);
-}
-export function timeSince(start) {
-    let oneDay = 1000 * 60 * 60 * 24
-    let oneHour = 1000 * 60 * 60
-    let oneMinute = 1000 * 60
-    let startTime = new Date(start)
-    let timeNow = Date.now()
-    let days = Math.floor((timeNow - startTime) / (oneDay))
-    let hours = Math.floor((timeNow - startTime - (days * oneDay)) / (oneHour))
-    let minutes = Math.floor((timeNow - startTime - (days * oneDay) - (hours * oneHour)) / (oneMinute))
-    return [days, hours, minutes]
-}
-export function formatLineGraphData(data, totalxp) {
+};
+export function timeSince(start) {  //calculate how many days, hours, minutes since
+    let oneDay = 1000 * 60 * 60 * 24;
+    let oneHour = 1000 * 60 * 60;
+    let oneMinute = 1000 * 60;
+    let startTime = new Date(start);
+    let timeNow = Date.now();
+    let days = Math.floor((timeNow - startTime) / (oneDay));
+    let hours = Math.floor((timeNow - startTime - (days * oneDay)) / (oneHour));
+    let minutes = Math.floor((timeNow - startTime - (days * oneDay) - (hours * oneHour)) / (oneMinute));
+    return [days, hours, minutes];
+};
+export function formatLineGraphData(data, totalxp) {    //formatted data for linegraph
     let formatedData = [
         {label: "November", value: 0},
         {label: "December", value: 0},
@@ -95,20 +78,20 @@ export function formatLineGraphData(data, totalxp) {
         {label: "September", value: 0},
         {label: "October", value: 0},
     ];
-    let sizeType = byteConversion(totalxp).split(" ")[1]
-    let divider = sizeType === "Kb" ? 1000 : 1000000
+    let sizeType = byteConversion(totalxp).split(" ")[1];
+    let divider = sizeType === "Kb" ? 1000 : 1000000;
     data.forEach(e => {
         var date = new Date(e.createdAt);
         var month = date.toLocaleString('default', { month: 'long' });
         formatedData.forEach(obj => {
             if (obj.label === month) {
-                obj.value = parseFloat((obj.value + e.amount / divider).toFixed(2), 10)
+                obj.value = parseFloat((obj.value + e.amount / divider).toFixed(2), 10);
             }
         });
     });
     return formatedData;
-}
-export function formatBarGraphData(data) {
+};
+export function formatBarGraphData(data) {  //formatted data for bargraph
     let formatedData = [
         {label: "Data", value: 0, success: 0, fail: 0},
         {label: "Loop", value: 0, success: 0, fail: 0},
@@ -133,15 +116,5 @@ export function formatBarGraphData(data) {
         };
       });
     });
-    return formatedData
-}
-export function fetchParams(token, query) {
-    return {
-        method:"POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-        body:JSON.stringify(query),
-    }
-}
+    return formatedData;
+};

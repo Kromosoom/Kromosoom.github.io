@@ -8,14 +8,14 @@ export default class {
     async getHtml() {   //build page html
         return ``;
     };
-    buildNavbar() {
+    buildNavbar() { //build navbar with header
         return `
             <div class="header">
                 GRAPHQL
             </div>
         `;
     };
-    buildFooter() {
+    buildFooter() { //build footer
         return `
             <div class="contact">
                 <i class="fa-brands fa-discord icon"></i>kromosoom

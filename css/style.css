@@ -30,15 +30,6 @@ body {
     text-shadow: 5px 5px 15px black;
 }
 .navbar-btns {
-    /* float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background-color: #555;
-    color: white;
-    font-size: 17px;
-    border: none;
-    cursor: pointer; */
     position: absolute;
     right: 40px;
     bottom: 0;
@@ -59,8 +50,6 @@ body {
     color: #240090;
 }
 .main {
-   /* position: relative;
-   top: 100px; */
    display: flex;
    flex-direction: column;
    width: 99%;
@@ -70,19 +59,14 @@ body {
 }
 .user-stats {
     height: 300px;
-    /* display: flex;
-    flex-direction: row;
-    justify-content: space-between; */
     display: grid;
     grid-auto-flow: column;
 }
 .welcome {
-    /* width: 800px; */
     height: 50px;
     margin-top: 50px;
     margin-left: 50px;
     font-size: 35px;
-    /* text-align: center; */
     font-weight: bolder;
     color: antiquewhite;
 }
@@ -177,12 +161,8 @@ li {
 }
 .loginform {
     text-align: center;
-    /* background-color: beige; */
-    /* width: 450px; */
     margin: auto;
-    /* min-inline-size: fit-content; */
     margin-top: 200px;
-    /* height: 390px; */
     padding: 25px;
     color: antiquewhite;
     font-size: 25px;

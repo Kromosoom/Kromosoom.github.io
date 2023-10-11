@@ -15,7 +15,6 @@ export default class extends abstractView {
             </div>
         `;
         buildView.appendChild(navbar);
-
         const main = document.getElementById("main");
         const error = document.createElement("div");
         error.classList.add("error");
@@ -24,7 +23,6 @@ export default class extends abstractView {
         `;
         main.innerHTML = error.outerHTML;
         buildView.appendChild(main);
-
         const footer = document.getElementById("footer");
         footer.innerHTML = this.buildFooter();
         buildView.appendChild(footer);
