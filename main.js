@@ -43,7 +43,7 @@ const router = async () => {
     const view = new match.route.view(match);
     document.querySelector("body").innerHTML = await view.getHtml();
 };
-window.addEventListener("popstate", router); //for func router to be executed when pressing "forward/backwards" in browser
+window.addEventListener("hashchange", router); //for func router to be executed when pressing "forward/backwards" in browser
 document.addEventListener("DOMContentLoaded", () => {   //when HTML/script is loaded/executed, add all the possible eventlisteners
     document.body.addEventListener("click", e => {
         if (e.target.matches("[log-in]")) {
