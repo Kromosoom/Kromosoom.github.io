@@ -12,28 +12,32 @@ export const navigateTo = url => { //change URL without reloading the page
 };
 const router = async () => {
     const routes = [
-        {path: "/login", view: Login},
+        {path: "#login", view: Login},
         {path: "/", view: Home},
-        {path: "/error", view: Error},
+        {path: "#error", view: Error},
     ];
     const potentialMatches = routes.map(route => {
         return {
             route: route,
-            result: location.pathname === route.path
+            result: location.hash === route.path
         }
     });
     let match = potentialMatches.find(potentialMatch => potentialMatch.result) //find which routes path matched url
-    if (!match) {   //if no such path, load error page
+    if (!match && location.hash === "") {   //if no such path, load error page
+        match = {
+            route: routes[1],
+            result: [location.hash]
+        };
+    } else if (!match) {    //if no such path, load error page
         match = {
             route: routes[2],
-            result: [location.pathname]
+            result: [location.hash]
         };
-        console.log("WRONG PAGE")
     };
     if (document.cookie !== "graphql=access" && match.route.path === "/") {
         match = {
             route: routes[0],
-            result: [location.pathname]
+            result: [location.hash]
         };
     };
     const view = new match.route.view(match);
@@ -50,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {   //when HTML/script is lo
             e.preventDefault();
             document.cookie = "graphql=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
             localStorage.clear();
-            navigateTo("/login");
+            navigateTo("#login");
         }
         if (e.target.matches("[audit-link]")) {
             window.open("https://github.com/01-edu/public/tree/master/subjects/graphql/audit");
