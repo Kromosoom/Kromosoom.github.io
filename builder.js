@@ -51,7 +51,7 @@ export async function UserData(token) { //formatted user data
 export async function buildLineGraph(token) {   //linegraph builder with data
     let xpSum = 0;
     let lineGraph;
-    const xpProgress = await helpers.GetData(apiUrl, token, queryString.xpProgression2);
+    const xpProgress = await helpers.GetData(apiUrl, token, queryString.xpProgression);
     const lineGraphData = helpers.formatLineGraphData(xpProgress.data.transaction_aggregate.nodes, xpProgress.data.transaction_aggregate.aggregate.sum.amount);
     let maxLineX = lineGraphData.length;
     lineGraphData.forEach(obj => {

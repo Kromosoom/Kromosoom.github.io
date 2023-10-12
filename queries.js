@@ -66,19 +66,6 @@ export const lastProject = {
 export const xpProgression = {
     query: `
         {
-            transaction(where: {eventId: {_eq:85}, type: {_eq: "xp"}}, order_by: {createdAt: asc}) {
-                eventId
-                path
-                type
-                createdAt
-                amount
-            }
-        }
-    `
-};
-export const xpProgression2 = {
-    query: `
-        {
             transaction_aggregate(where: {eventId: {_eq:85}, type: {_eq: "xp"}}, order_by: {createdAt: asc}) {
                 aggregate {
                   sum {
