@@ -20,6 +20,7 @@ export async function UserData(token) { //formatted user data
         "auditsDone": 0,
         "auditsReceived": 0,
         "lastProject": "",
+        "active": "",
         "lastProjectTime": [],
         "totalXp": 0,
         "avgGrade": 0,
@@ -42,8 +43,10 @@ export async function UserData(token) { //formatted user data
     userData.lastProject = lastProject.data.progress[0].object.name;
     if (!lastProject.data.progress[0].isDone) {
         start = lastProject.data.progress[0].createdAt;
+        userData.active = "Active"
     } else {
         start = lastProject.data.progress[0].updatedAt;
+        userData.active = "Inactive"
     };
     userData.lastProjectTime = helpers.timeSince(start);
     return userData;

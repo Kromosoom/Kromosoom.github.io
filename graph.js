@@ -20,7 +20,7 @@ export class Graph {
         let baseX = `${this.padding},${this.elemHeight - this.padding} ${this.elemWidth - this.padding + 20},${this.elemHeight - this.padding}`;
         let baseY = `${this.padding},${this.padding - 20} ${this.padding},${this.elemHeight - this.padding}`;
         let points = baseY + " " + baseX;
-        this.base = `
+        this.base = `          
             <marker id="arrowheadY" viewBox="0 0 60 60" refX="10" refY="30" markerUnits="strokeWidth" markerWidth="5" markerHeight="5" orient="auto">
                 <path d="M 60 0 L 0 30 L 60 60 z" fill="#000"/>
             </marker>
@@ -83,7 +83,7 @@ export class Graph {
             sumValue += e.value;
             const y = this.graphHeight - (sumValue / this.maxY) * this.graphHeight + this.padding;
             this.smallDots += `
-                <g class="topg">
+                <g>
                     <circle fill="#190061" stroke="none" cx="${x}" cy="${y}" r="5"></circle>
                     <text x="${x}" y="${y-10}" style="fill: antiquewhite;">${sumValue}</text>
                 </g>`;

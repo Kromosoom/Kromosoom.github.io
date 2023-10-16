@@ -56,7 +56,7 @@ export default class extends abstractView {
                         ${userData.lastProject}
                     </div>
                     <div class="box-content-sml" id="content-sml-project">
-                        Since: ${userData.lastProjectTime[0]} d ${userData.lastProjectTime[1]} h ${userData.lastProjectTime[2]} m
+                    ${userData.active} since: ${userData.lastProjectTime[0]} d ${userData.lastProjectTime[1]} h ${userData.lastProjectTime[2]} m
                     </div>
                 </div>
                 <div class="box">
@@ -72,10 +72,10 @@ export default class extends abstractView {
                 </div>
             </div>
             <div class="user-graphs">
-                <svg class="linegraph" id="linegraph">
+                <svg viewBox="0 0 1200 600" class="graph" id="linegraph">
                     ${lineGraphData}
                 </svg>
-                <svg class="linegraph" id="bargraph">
+                <svg viewBox="0 0 1200 600" class="graph" id="bargraph">
                     ${barGraphData}
                 </svg>
             </div>
