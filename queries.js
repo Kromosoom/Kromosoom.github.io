@@ -83,7 +83,7 @@ export const xpProgression = {
 export const jsPiscineAttempts = {
     query: `
         {
-            result_aggregate(where: {eventId: {_eq:102},  type: {_eq: "tester"}}, order_by: {createdAt: asc}) {
+            result_aggregate(where: {eventId: {_in: [90, 102, 105, 127, 151]},  type: {_eq: "tester"}}, order_by: {createdAt: asc}) {
                 aggregate {
                     count
                 }
