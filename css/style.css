@@ -151,7 +151,7 @@ body {
         height: 300px;
         width: 600px;
     }
-  }
+}
 .footer {
     position: absolute;
     bottom: 0;
@@ -180,6 +180,20 @@ body {
     /* position: absolute; */
     width: 55%;
     float: left;
+}
+@media screen and (max-width: 500px) {
+    .contact, .copyright {
+        font-size: 12px;
+    }
+    .box {
+        min-width: 350px;
+    }
+    .box-title, .box-content {
+        font-size: 30px;
+    }
+    .box-content-sml {
+        font-size: 15px;
+    }
 }
 .icon {
     margin-right: 5px;
