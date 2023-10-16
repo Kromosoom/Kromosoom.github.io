@@ -3,7 +3,7 @@ import abstractView from "./abstractView.js"
 export default class extends abstractView {
     constructor() {
         super();
-        this.setTitle("Profile");
+        this.setTitle("Home");
     };
     async getHtml() {
         let userData = JSON.parse(localStorage.getItem("userData"));

@@ -3,7 +3,7 @@ import abstractView from "./abstractView.js"
 export default class extends abstractView {
     constructor() {
         super();
-        this.setTitle("Login");
+        this.setTitle("Error");
     };
     async getHtml() {
         const buildView = document.createElement("div");

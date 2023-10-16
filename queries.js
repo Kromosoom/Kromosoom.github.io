@@ -73,9 +73,6 @@ export const xpProgression = {
                   }
                 }
                 nodes {
-                  eventId
-                  path
-                  type
                   createdAt
                   amount
                 }
@@ -93,7 +90,6 @@ export const jsPiscineAttempts = {
                 nodes {
                     grade
                     path
-                    createdAt
                 }
             }
         }
